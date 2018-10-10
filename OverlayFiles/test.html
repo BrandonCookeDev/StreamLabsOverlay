@@ -12,6 +12,12 @@
 			function updateSubCount(newSubCount){
 				document.getElementById('subCount').innerHTML = newSubCount;
 			}
+			function updateFollowerCount(newFolCount){
+				document.getElementById('followerCount').innerHTML = newFolCount;
+			}
+			function updateRecentFollower(newFollower){
+			document.getElementById('recentFollower').innerHTML = newFollower;
+			}	
 
 			var checkSubCount = function(){
 				axios.get('/total_subscriber_count.txt')
@@ -22,13 +28,6 @@
 					.catch(function(err){
 						console.error(err);
 					})
-			}
-
-			setInterval(checkSubCount, 5000)
-
-
-			function updateFollowerCount(newFolCount){
-				document.getElementById('followerCount').innerHTML = newFolCount;
 			}
 
 			var checkFolCount = function(){
@@ -42,25 +41,19 @@
 					})
 			}
 
-			setInterval(checkFolCount, 5000)
-		</script>
-
-		<script>
-		function updateRecentFollower(newFollower){
-			document.getElementById('recentFollower').innerHTML = newFollower;
-		}
-
-		var checkNewFollower = function(){
-			axios.get('/most_recent_follower.txt')
-			.then(function(resp){
-				console.log('Most Recent Follower: ', resp.data);
-				updateRecentFollower(resp.data);
-			})
-			.catch(function(err){
-				consol.error(err);
-			})
-		}
+			var checkNewFollower = function(){
+				axios.get('/most_recent_follower.txt')
+					.then(function(resp){
+						console.log('Most Recent Follower: ', resp.data);
+						updateRecentFollower(resp.data);
+					})
+					.catch(function(err){
+						consol.error(err);
+					})
+			}
 		setInterval(checkNewFollower, 5000)
+		setInterval(checkSubCount, 5000)
+		setInterval(checkFolCount, 5000)
 		</script>
 	</body>
 	
