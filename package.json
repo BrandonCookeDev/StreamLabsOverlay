@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server",
     "test": "node server/server"
   },
   "repository": {
