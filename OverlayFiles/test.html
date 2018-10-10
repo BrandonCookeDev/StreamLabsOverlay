@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="../node_modules/axios/dist/axios.min.js" ></script>
+		<script src="axios/dist/axios.js" ></script>
+	</head>
+	<body>
+		<label>Sub Count</label>: <span id='subCount'>0</span>
+		
+		<script>
+			function updateSubCount(newSubCount){
+				document.getElementById('subCount').innerHTML = newSubCount;
+			}
+
+			var checkSubCount = function(){
+				axios.get('/total_subscriber_count.txt')
+					.then(function(resp){
+						console.log('Sub Count: ', resp.data);
+						updateSubCount(resp.data);
+					})
+					.catch(function(err){
+						console.error(err);
+					})
+			}
+
+			setInterval(checkSubCount, 5000)
+		</script>
+	</body>
+	
+</html>
