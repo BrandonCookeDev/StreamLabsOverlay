@@ -1,0 +1,25 @@
+{
+  "name": "streamlabstest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node server/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandonCookeDev/StreamLabsTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrandonCookeDev/StreamLabsTest/issues"
+  },
+  "homepage": "https://github.com/BrandonCookeDev/StreamLabsTest#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "eslint": "^5.6.1",
+    "express": "^4.16.3",
+    "git": "^0.1.5"
+  }
+}

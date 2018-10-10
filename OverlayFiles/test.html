@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<script src="../node_modules/axios/dist/axios.min.js" ></script>
+		<script src="axios/dist/axios.js" ></script>
+	</head>
+	<body>
+		<label>Sub Count</label>: <span id='subCount'>0</span>
+		<label><br>Follower Count</label>: <span id='followerCount'>0</span>
+		<label><br>Most Recent Follower</label>: <span id='recentFollower'> </span>
+		
+		<script>
+			function updateSubCount(newSubCount){
+				document.getElementById('subCount').innerHTML = newSubCount;
+			}
+
+			var checkSubCount = function(){
+				axios.get('/total_subscriber_count.txt')
+					.then(function(resp){
+						console.log('Sub Count: ', resp.data);
+						updateSubCount(resp.data);
+					})
+					.catch(function(err){
+						console.error(err);
+					})
+			}
+
+			setInterval(checkSubCount, 5000)
+
+
+			function updateFollowerCount(newFolCount){
+				document.getElementById('followerCount').innerHTML = newFolCount;
+			}
+
+			var checkFolCount = function(){
+				axios.get('/total_follower_count.txt')
+					.then(function(resp){
+						console.log('Follower Count: ', resp.data);
+						updateFollowerCount(resp.data);
+					})
+					.catch(function(err){
+						console.error(err);
+					})
+			}
+
+			setInterval(checkFolCount, 5000)
+		</script>
+
+		<script>
+		function updateRecentFollower(newFollower){
+			document.getElementById('recentFollower').innerHTML = newFollower;
+		}
+
+		var checkNewFollower = function(){
+			axios.get('/most_recent_follower.txt')
+			.then(function(resp){
+				console.log('Most Recent Follower: ', resp.data);
+				updateRecentFollower(resp.data);
+			})
+			.catch(function(err){
+				consol.error(err);
+			})
+		}
+		setInterval(checkNewFollower, 5000)
+		</script>
+	</body>
+	
+</html>
