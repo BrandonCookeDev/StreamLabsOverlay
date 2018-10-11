@@ -1230,15 +1230,18 @@ var _reactDom = __webpack_require__(6);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _SubCountWatcher = __webpack_require__(25);
+var _Watcher = __webpack_require__(25);
 
-var _SubCountWatcher2 = _interopRequireDefault(_SubCountWatcher);
+var _Watcher2 = _interopRequireDefault(_Watcher);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_SubCountWatcher2.default, { auto: true, interval: '3000' }), document.getElementById('subCount'));
+_reactDom2.default.render(_react2.default.createElement(_Watcher2.default, { auto: true, interval: '3000', filepath: '/total_subscriber_count.txt' }), document.getElementById('subCount'));
 
 // main app
+
+_reactDom2.default.render(_react2.default.createElement(_Watcher2.default, { auto: true, interval: '3000', filepath: '/donationtrain_latest_amount.txt' }), document.getElementById('latestDonation'));
+_reactDom2.default.render(_react2.default.createElement(_Watcher2.default, { auto: true, interval: '3000', filepath: '/donationtrain_latest_donator.txt' }), document.getElementById('latestDonator'));
 
 /***/ }),
 /* 15 */
@@ -22486,19 +22489,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var FILENAME = '/total_subscriber_count.txt';
+var Watcher = function (_Component) {
+	_inherits(Watcher, _Component);
 
-var SubCountWatcher = function (_Component) {
-	_inherits(SubCountWatcher, _Component);
+	function Watcher(props) {
+		_classCallCheck(this, Watcher);
 
-	function SubCountWatcher(props) {
-		_classCallCheck(this, SubCountWatcher);
-
-		var _this = _possibleConstructorReturn(this, (SubCountWatcher.__proto__ || Object.getPrototypeOf(SubCountWatcher)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Watcher.__proto__ || Object.getPrototypeOf(Watcher)).call(this, props));
 
 		_this.interval = parseInt(props.interval);
 		_this.auto = props.auto != null ? true : false;
-		_this.state = { subCount: 0 };
+		_this.filepath = props.filepath;
+		_this.state = { value: '' };
 
 		_this.updateSubCount = _this.updateSubCount.bind(_this);
 		_this.getFile = _this.getFile.bind(_this);
@@ -22510,7 +22512,7 @@ var SubCountWatcher = function (_Component) {
 		return _this;
 	}
 
-	_createClass(SubCountWatcher, [{
+	_createClass(Watcher, [{
 		key: 'updateSubCount',
 		value: function updateSubCount() {
 			var _this2 = this;
@@ -22520,9 +22522,9 @@ var SubCountWatcher = function (_Component) {
 			};
 
 			try {
-				this.getFile().then(function (count) {
+				this.getFile().then(function (data) {
 					_this2.setState({
-						subCount: count
+						value: data
 					});
 				}).catch(err);
 			} catch (e) {
@@ -22537,7 +22539,7 @@ var SubCountWatcher = function (_Component) {
 			};
 
 			try {
-				return _axios2.default.get(FILENAME).then(function (resp) {
+				return _axios2.default.get(this.props.filepath).then(function (resp) {
 					return resp.data;
 				}).catch(err);
 			} catch (e) {
@@ -22550,15 +22552,15 @@ var SubCountWatcher = function (_Component) {
 			return _react2.default.createElement(
 				'span',
 				{ 'class': 'subCountSpan' },
-				this.state.subCount
+				this.state.value
 			);
 		}
 	}]);
 
-	return SubCountWatcher;
+	return Watcher;
 }(_react.Component);
 
-exports.default = SubCountWatcher;
+exports.default = Watcher;
 
 /***/ }),
 /* 26 */

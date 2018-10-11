@@ -9,4 +9,5 @@ WORKDIR /var/app
 ENV APP_DIR /var/app
 
 RUN npm install
+RUN npm run build
 CMD ["npm", "start"]
