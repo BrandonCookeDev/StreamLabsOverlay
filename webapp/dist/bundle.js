@@ -1236,12 +1236,22 @@ var _Watcher2 = _interopRequireDefault(_Watcher);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_Watcher2.default, { auto: true, interval: '3000', filepath: '/total_subscriber_count.txt' }), document.getElementById('subCount'));
+var INTERVAL = 1000;
 
 // main app
 
-_reactDom2.default.render(_react2.default.createElement(_Watcher2.default, { auto: true, interval: '3000', filepath: '/donationtrain_latest_amount.txt' }), document.getElementById('latestDonation'));
-_reactDom2.default.render(_react2.default.createElement(_Watcher2.default, { auto: true, interval: '3000', filepath: '/donationtrain_latest_donator.txt' }), document.getElementById('latestDonator'));
+function renderDataNode(filepath, id) {
+	var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+	var isMoney = options.isMoney != null ? options.isMoney === true : false;
+	_reactDom2.default.render(_react2.default.createElement(_Watcher2.default, { auto: true, interval: '3000', filepath: filepath, isMoney: isMoney }), document.getElementById(id));
+}
+
+renderDataNode('/total_subscriber_count.txt', 'subCount');
+renderDataNode('/donationtrain_latest_amount.txt', 'latestDonation', { isMoney: true });
+renderDataNode('/donationtrain_latest_donator.txt', 'latestDonator');
+renderDataNode('/subtrain_latest_sub.txt', 'latestSub');
+renderDataNode('/most_recent_cheerer.txt', 'latestCheerer');
 
 /***/ }),
 /* 15 */
@@ -22481,6 +22491,10 @@ var _axios = __webpack_require__(26);
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _common = __webpack_require__(45);
+
+var _common2 = _interopRequireDefault(_common);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22500,11 +22514,13 @@ var Watcher = function (_Component) {
 		_this.interval = parseInt(props.interval);
 		_this.auto = props.auto != null ? true : false;
 		_this.filepath = props.filepath;
+		_this.isMoney = props.isMoney;
 		_this.state = { value: '' };
 
 		_this.updateSubCount = _this.updateSubCount.bind(_this);
 		_this.getFile = _this.getFile.bind(_this);
 
+		_this.updateSubCount();
 		if (_this.auto) {
 			if (isNaN(_this.interval)) throw new Error('SubCountWatcher: checkPeriod cannot be a non-number');
 			setInterval(_this.updateSubCount, _this.interval);
@@ -22523,6 +22539,7 @@ var Watcher = function (_Component) {
 
 			try {
 				this.getFile().then(function (data) {
+					data = _this2.isMoney ? moneyRemoveDecimals(data) : data;
 					_this2.setState({
 						value: data
 					});
@@ -22539,7 +22556,7 @@ var Watcher = function (_Component) {
 			};
 
 			try {
-				return _axios2.default.get(this.props.filepath).then(function (resp) {
+				return _axios2.default.get(this.filepath).then(function (resp) {
 					return resp.data;
 				}).catch(err);
 			} catch (e) {
@@ -22551,7 +22568,7 @@ var Watcher = function (_Component) {
 		value: function render() {
 			return _react2.default.createElement(
 				'span',
-				{ 'class': 'subCountSpan' },
+				null,
 				this.state.value
 			);
 		}
@@ -23449,6 +23466,17 @@ module.exports = function spread(callback) {
   };
 };
 
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+function moneyRemoveDecimals(s) {
+	return s.replace(/\.[\S]*/, '');
+}
 
 /***/ })
 /******/ ]);

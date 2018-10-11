@@ -9,26 +9,50 @@
                 font-size: 12pt;
                 font-family: Courier New, Courier, monospace;
             }
-            span.subCountSpan{
-                color: teal;
-                font-size: 24pt;
+            div.analyticsWrapper{
+                position: fixed;
+                
+            }
+            div.analytics{
+
             }
         </style>
     </head>
     <body>
-        
-        <div>
-            <span><label>Sub Count:</label></span> <span id="subCount"></span>
-        </div>
-        <div>
-            <span><label>Latest Donation:</label></span>
-            <div>
-                <span id="latestDonator" ></span> <span id="latestDonation"></span>
+
+        <div class="analyticsWrapper">
+            <div class="analytics">
+                <span><label>Sub Count</label></span> 
+                <br/>
+                <span id="subCount" class="subCountSpan watcherElement"></span>
+            </div>
+            <hr/>
+            <div class="analytics">
+                <span><label>Last Sub</label></span>
+                <br/>
+                <span id="latestSub" class="latestSubSpan watcherElement"></span>
+            </div>
+            <hr/>
+            <div class="analytics">
+                <span><label>Last Donation:</label></span>
+                <br/>
+                <span>
+                    <span id="latestDonator" class="donationDonatorSpan watcherElement"></span>: <span id="latestDonation" class="donationAmountSpan watcherElement"></span>
+                </span>
+            </div>
+            <hr/>
+            <div class="analytics">
+                <span><label>Last Cheer</label></span>
+                <br/>
+                <span>
+                    <span id="latestCheerer" class="latestCheererSpan watcherElement"></span>
+                </span>
             </div>
         </div>
 
         <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js" ></script>
         <script type="text/javascript" src="dist/bundle.js"></script>
+        <script type="text/javascript" src="src/common.js"></script>
     </body>
 </html>

@@ -5,7 +5,7 @@ var parentDir = __dirname;
 
 module.exports = {
     entry: [
-        './src/app.js'
+        './src/streamLayout.js'
     ],
     module: {
         loaders: [{

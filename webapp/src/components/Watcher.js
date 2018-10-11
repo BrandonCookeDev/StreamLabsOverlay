@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import common from '../common';
 
 
 export default class Watcher extends Component{
@@ -10,11 +11,13 @@ export default class Watcher extends Component{
 		this.interval = parseInt(props.interval);
 		this.auto = props.auto != null ? true : false;
 		this.filepath = props.filepath;
+		this.isMoney = props.isMoney;
 		this.state = { value: '' };
   
 		this.updateSubCount = this.updateSubCount.bind(this);
 		this.getFile = this.getFile.bind(this);
 
+		this.updateSubCount();
 		if(this.auto){
 			if(isNaN(this.interval)) throw new Error('SubCountWatcher: checkPeriod cannot be a non-number');
 			setInterval(this.updateSubCount, this.interval);
@@ -27,6 +30,7 @@ export default class Watcher extends Component{
 		try{
 			this.getFile()
 				.then(data => {
+					data = this.isMoney ? moneyRemoveDecimals(data) : data;
 					this.setState({
 						value: data
 					})
@@ -41,7 +45,7 @@ export default class Watcher extends Component{
 		let err = (e) => console.error('SubCountWatcher.getFile error: %s', e);
 
 		try{
-			return axios.get(this.props.filepath)
+			return axios.get(this.filepath)
 				.then(resp => {
 					return resp.data;
 				})
