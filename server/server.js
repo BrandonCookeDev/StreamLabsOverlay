@@ -7,6 +7,7 @@ app.use(express.static(__dirname));
 app.use(express.static(__dirname + '/../OverlayFiles'))
 app.use(express.static(__dirname + '/../node_modules'))
 app.use(express.static(__dirname + '/../StreamLabs'))
+app.use(express.static(__dirname + '/../resources'))
 
 app.listen(8080, function(err){
 	console.log('listening on 8080');

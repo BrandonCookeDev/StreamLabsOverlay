@@ -2,11 +2,40 @@
 	<head>
 		<script src="../node_modules/axios/dist/axios.min.js" ></script>
 		<script src="axios/dist/axios.js" ></script>
+
+		<style>
+			@font-face{
+				font-family: "MADE Evolve Sans Medium";
+				src: url('/fonts/MADE Evolve Sans Medium (PERSONAL USE).otf');
+				font-weight: 400;
+				font-style: normal;
+			}
+
+			body{
+				font-family: "MADE Evolve Sans Medium"
+			}
+
+			div.analytics{
+				width: 200px;
+				margin-left: 100px;
+				margin-top: 250px;
+				background-color: grey;
+				font-size: 12pt;
+				color: white;
+
+			}
+		</style>
 	</head>
 	<body>
-		<label>Sub Count</label>: <span id='subCount'>0</span>
-		<label><br>Follower Count</label>: <span id='followerCount'>0</span>
-		<label><br>Most Recent Follower</label>: <span id='recentFollower'> </span>
+		<div class="analytics">
+			<label>Sub Count</label>: <div id='subCount'>0</div>
+			<br/>
+			<label>Follower Count</label>: <div id='followerCount'>0</div>
+			<br/>
+			<label>Most Recent Follower</label>: <div id='recentFollower'> </div>
+			<br/>
+			<label>Most Recent Donor</label>: <div id='latestDonor'></div>
+		</div>
 		
 		<script>
 			function updateSubCount(newSubCount){
@@ -16,9 +45,70 @@
 				document.getElementById('followerCount').innerHTML = newFolCount;
 			}
 			function updateRecentFollower(newFollower){
-			document.getElementById('recentFollower').innerHTML = newFollower;
+				document.getElementById('recentFollower').innerHTML = newFollower;
 			}	
 
+
+			/*
+			axios.get(url, function(err, data){
+				//if err handle,
+				//else{
+				//	do stuff with data
+				//}
+			})
+
+			axios.get = function(callbackFunction){
+				//perform get request
+				//get data from response
+				//send back to the caller
+				callbackFunction(null, dataCallerWanted)
+			}
+
+			// function 5		//
+			// function 4		//
+			// variable 3		//
+			// variable 2		//
+			// function 3		//
+			// function 2		//
+			// function 1		//
+			// start program	//
+			//////////////////////
+
+			// STACK EXAMPLE ^^^^^^ 
+			*/
+			
+			function getData(textFilepath, htmlId){
+				return axios.get(textFilepath)
+					.then(function(resp){
+						console.log(textFilepath, ":", resp.data);
+						document.getElementById(htmlId).innerHTML = resp.data;
+						return true;
+					})
+					.catch(function(err){
+						console.error(err);
+						return false;
+					})
+			}
+
+			// define functions to get specific data to an id in the body
+			var totalSubs = getData('/total_subscriber_count.txt', 'subCount');
+			var totalFol = getData('/total_follower_count.txt', 'followerCount');
+			var recentFol = getData('/most_recent_follower.txt', 'recentFollower');
+			var latestDonor = getData('/donationtrain_latest_donator.txt', 'latestDonor');
+
+			// get data immediately
+			totalSubs();
+			totalFol();
+			recentFol();
+			latestDonor();
+
+			// get data every 5 seconds
+			setInterval(totalSubs, 5000);
+			setInterval(totalFol, 5000);
+			setInterval(recentFol, 5000);
+			setInterval(latestDonor, 5000);
+
+			/*
 			var checkSubCount = function(){
 				axios.get('/total_subscriber_count.txt')
 					.then(function(resp){
@@ -28,8 +118,8 @@
 					.catch(function(err){
 						console.error(err);
 					})
+				console.log(data)
 			}
-
 			var checkFolCount = function(){
 				axios.get('/total_follower_count.txt')
 					.then(function(resp){
@@ -51,9 +141,17 @@
 						consol.error(err);
 					})
 			}
+
+		/*
 		setInterval(checkNewFollower, 5000)
 		setInterval(checkSubCount, 5000)
 		setInterval(checkFolCount, 5000)
+
+		Promise.all([checkNewFollower(), checkSubCount(), checkFolCount()])	
+			.then(data => {
+				console.log(data);
+			})
+			*/
 		</script>
 	</body>
 	
