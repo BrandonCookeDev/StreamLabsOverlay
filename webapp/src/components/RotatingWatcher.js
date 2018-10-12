@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import common from '../common';
 
-
-export default class Watcher extends Component{
-
+export default class RotatingWatcher extends Component{
 	constructor(props) {
 		super(props);
 		this.interval = parseInt(props.interval);
@@ -41,11 +39,11 @@ export default class Watcher extends Component{
 		}
 	}
 
-	getFile(){
+	getFiles(){
 		let err = (e) => console.error('SubCountWatcher.getFile error: %s', e);
 
 		try{
-			return axios.get(this.filepath)
+			return axios.get(this.filepath1)
 				.then(resp => {
 					return resp.data;
 				})
