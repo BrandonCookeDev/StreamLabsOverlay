@@ -3,7 +3,7 @@ RUN apt-get update			# update apt-get on the server
 RUN apt-get install -y vim 	# install vim via apt-get
 RUN apt-get install -y curl	# install curl via apt-get
 
-# copy all contents from src directory into servers /var/app directory
+# copy all contents from current directory into servers /var/app directory
 COPY . /var/app			
 
 # set environment variable $APP_DIR to /var/app	
