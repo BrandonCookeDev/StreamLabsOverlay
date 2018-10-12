@@ -1,0 +1,34 @@
+@font-face{
+	font-family: 'MADE Evolve Sans Bold';
+	font-weight: normal;
+	font-style: normal;
+	src: url('../fonts/MADE Evolve Sans Bold (PERSONAL USE).otf');
+}
+@font-face{
+	font-family: 'MADE Evolve Sans Medium';
+	font-weight: normal;
+	font-style: normal;
+	src: url('../fonts/MADE Evolve Sans Medium (PERSONAL USE).otf');
+}
+@font-face{
+	font-family: 'MADE Evolve Sans Light';
+	font-weight: normal;
+	font-style: normal;
+	src: url('../fonts/MADE Evolve Sans Light (PERSONAL USE).otf');
+}
+@font-face{
+	font-family: 'MADE Evolve Sans Regular';
+	font-weight: normal;
+	font-style: normal;
+	src: url('../fonts/MADE Evolve Sans Regular (PERSONAL USE).otf');
+}
+@font-face{
+	font-family: 'MADE Evolve Sans Thin';
+	font-weight: normal;
+	font-style: normal;
+	src: url('../fonts/MADE Evolve Sans Thin (PERSONAL USE).otf');
+}
+
+html{
+	font-family: 'MADE Evolve Sans Regular';
+}
