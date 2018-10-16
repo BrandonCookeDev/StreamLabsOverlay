@@ -5,4 +5,3 @@ function moneyRemoveDecimals(s){
 function jsonEqual(a,b) {
     return JSON.stringify(a) === JSON.stringify(b);
 }
-jsonEqual(user1, user2)

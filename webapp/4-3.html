@@ -3,11 +3,15 @@
     <head>
         <title> Ideal React Seed </title>
         <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="styles/base.css" />
         <style>
-            body{
+             body{
                 width: 1920px;
                 height: 1080px;
-                background-image: url('images/LowerBar.png');
+                font-family: "MADE Evolve Sans Thin";
+                font-weight: 700;
+                letter-spacing: 1px;
+                font-size: 1.3vw;
             }
             label.errorLabel{
                 color: red;
@@ -16,44 +20,40 @@
             }
             div.analyticsWrapper{
                 position: fixed;
+                color: white;
+                margin-top:33%;
+                margin-left: 5.8%;
                 
             }
             div.analytics{
-                
+                margin-bottom: 42px;
             }
         </style>
     </head>
     <body>
-
         <div class="analyticsWrapper">
             <div class="analytics">
-                <span><label>Sub Count</label></span> 
-                <br/>
-                <span id="subCount" class="subCountSpan watcherElement"></span>
-            </div>
-            <hr/>
-            <div class="analytics">
-                <span><label>Last Sub</label></span>
-                <br/>
-                <span id="latestSub" class="latestSubSpan watcherElement"></span>
-            </div>
-            <hr/>
-            <div class="analytics">
-                <span><label>Last Donation:</label></span>
-                <br/>
-                <span>
-                    <span id="latestDonator" class="donationDonatorSpan watcherElement"></span>: <span id="latestDonation" class="donationAmountSpan watcherElement"></span>
+                <span class="counter">
+                    <span id="subCount" class="subCountSpan watcherElement"></span>
                 </span>
             </div>
-            <hr/>
             <div class="analytics">
-                <span><label>Last Cheer</label></span>
-                <br/>
-                <span>
-                    <span id="latestCheerer" class="latestCheererSpan watcherElement"></span>
+                <span class="counter">
+                    <span id="latestSub" class="latestSubSpan watcherElement"></span>
+                </span>
+            </div>
+            <div class="analytics">
+                <span class="counter">
+                    <span id="allTimeDonationCheer" class="donationAmountSpan watcherElement"></span>
+                </span>
+            </div>
+            <div class="analytics">
+                <span class="counter">
+                    <span id="latestDonationCheer" class="donationAmountSpan watcherElement"></span>
                 </span>
             </div>
         </div>
+
 
         <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js" ></script>
