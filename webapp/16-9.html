@@ -21,7 +21,7 @@
             img.icon{
                 margin-top: 2px;
                 height: 16px;
-                vertical-align:top;
+                vertical-align:text-top;
             }
             label.errorLabel{
                 color: red;
@@ -30,7 +30,7 @@
             }
             div.analyticsWrapper{
                 z-index: 5;
-                margin-top: 661px;
+                margin-top: 665px;
                 margin-left: 300px;
                 position: fixed;
                 font-size: 18px;
@@ -40,6 +40,9 @@
             }
             .analytics{
                 padding-left: 15px;
+            }
+            .watcherElement{
+                padding-top: 5px;
             }
         </style>
     </head>
@@ -61,13 +64,13 @@
             <span class="analytics">
                 <span class="icon"><img src="images/NewTip.png" class="icon"/></span>
                 <span class="counter">
-                    <span id="latestDonator" class="donationDonatorSpan watcherElement"></span>: <span id="latestDonation" class="donationAmountSpan watcherElement"></span>
+                    <span id="allTimeDonationCheer" class="donationAmountSpan watcherElement"></span>
                 </span>
             </span>
             <span class="analytics">
                 <span class="icon"><img src="images/NewCheer.png" class="icon"/></span>
                 <span class="counter">
-                    <span id="latestCheerer" class="latestCheererSpan watcherElement"></span>
+                    <span id="latestDonationCheer" class="donationAmountSpan watcherElement"></span>
                 </span>
             </span>
         </div>

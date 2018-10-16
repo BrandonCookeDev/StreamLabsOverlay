@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import common from '../common';
 
-export default class RotatingWatcher extends Component{
+export default class Comparator extends Component{
 	constructor(props) {
 		super(props);
 		this.interval = parseInt(props.interval);
 		this.auto = props.auto != null ? true : false;
 		this.filepath = props.filepath;
+		this.filepaths = props.filepaths;
 		this.isMoney = props.isMoney;
 		this.state = { value: '' };
   
 		this.updateValue = this.updateValue.bind(this);
-		this.getFile = this.getFile.bind(this);
+		this.getFiles = this.getFiles.bind(this);
 
 		this.updateValue();
 		if(this.auto){
@@ -26,7 +27,7 @@ export default class RotatingWatcher extends Component{
 		let err = (e) => console.error('SubCountWatcher.updateValue error: %s', e);
 
 		try{
-			this.getFile()
+			this.getFiles()
 				.then(data => {
 					data = this.isMoney ? moneyRemoveDecimals(data) : data;
 					this.setState({
@@ -43,7 +44,31 @@ export default class RotatingWatcher extends Component{
 		let err = (e) => console.error('SubCountWatcher.getFile error: %s', e);
 
 		try{
-			return axios.get(this.filepath1)
+			return Promise.all(this.filepaths.map(filepath => {
+				axios.get(filepath)
+					.then(resp => {
+						return resp.data;
+					})
+					.catch(err);
+			}))
+			.then(results => {
+				let max = results[0];
+				results.forEach(e => {
+					if(e > max) max = e;
+				})
+				return max;
+			})	
+			.catch(err);
+		} catch(e){
+			err(e);
+		}
+	}
+
+	getFile(){
+		let err = (e) => console.error('SubCountWatcher.getFile error: %s', e);
+
+		try{
+			return axios.get(this.filepath)
 				.then(resp => {
 					return resp.data;
 				})
@@ -51,6 +76,22 @@ export default class RotatingWatcher extends Component{
 		} catch(e){
 			err(e);
 		}
+	}
+
+	getMax(data){
+		let max = data[0];
+		data.forEach(e => {
+			if(e > max) max = e;
+		})
+		return max;
+	}
+
+	getMin(data){
+		let min = data[0];
+		data.forEach(e => {
+			if(e < min) min = e;
+		})
+		return min;
 	}
 
 	render(){
