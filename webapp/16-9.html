@@ -11,6 +11,7 @@
                 font-family: "MADE Evolve Sans Thin";
                 font-weight: 700;
                 letter-spacing: 1px;
+                font-size: 1.3vw;
             }
             img.overlayBar{
                 z-index: -5 !important;
@@ -19,9 +20,9 @@
                 width: 100%;
             }
             img.icon{
-                margin-top: 2px;
-                height: 16px;
-                vertical-align:text-top;
+                margin-top: .2%;
+                height: 70%;
+                vertical-align:sub;
             }
             label.errorLabel{
                 color: red;
@@ -30,19 +31,20 @@
             }
             div.analyticsWrapper{
                 z-index: 5;
-                margin-top: 665px;
-                margin-left: 300px;
+                bottom: 0;
+                height: 3.7%;
+                padding-top: .15%;
+                margin-left: 24%;
                 position: fixed;
-                font-size: 18px;
                 color: white;
                 display: inline-block;
-                vertical-align: middle;
+                vertical-align:text-bottom;
             }
             .analytics{
                 padding-left: 15px;
             }
-            .watcherElement{
-                padding-top: 5px;
+            .counter{
+                vertical-align: middle;
             }
         </style>
     </head>
@@ -56,19 +58,19 @@
                 </span>
             </span>
             <span class="analytics">
-                <span class="icon"><img src="images/NewSub.png" class="icon" /> </span>
+                <span class="icon"><img src="images/LastSub.png" class="icon" /> </span>
                 <span class="counter">
                     <span id="latestSub" class="latestSubSpan watcherElement"></span>
                 </span>
             </span>
             <span class="analytics">
-                <span class="icon"><img src="images/NewTip.png" class="icon"/></span>
+                <span class="icon"><img src="images/TopTip.png" class="icon"/></span>
                 <span class="counter">
                     <span id="allTimeDonationCheer" class="donationAmountSpan watcherElement"></span>
                 </span>
             </span>
             <span class="analytics">
-                <span class="icon"><img src="images/NewCheer.png" class="icon"/></span>
+                <span class="icon"><img src="images/LastTip.png" class="icon"/></span>
                 <span class="counter">
                     <span id="latestDonationCheer" class="donationAmountSpan watcherElement"></span>
                 </span>
