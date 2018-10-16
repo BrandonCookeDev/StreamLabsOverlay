@@ -44,7 +44,7 @@ export default class Comparator extends Component{
 		let err = (e) => console.error('SubCountWatcher.getFile error: %s', e);
 
 		try{
-			return Promise.all(this.filepaths.map(filepath => {
+			return Promise.all(this.filepaths.split(',').map(filepath => {
 				axios.get(filepath)
 					.then(resp => {
 						return resp.data;
