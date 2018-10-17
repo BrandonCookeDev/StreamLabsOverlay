@@ -1,7 +1,6 @@
 {
   "name": "streamlabstest",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node server/server",
@@ -23,5 +22,7 @@
     "axios": "^0.18.0",
     "express": "^4.16.3",
     "react-webpack-seed": "^1.0.10"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
