@@ -49,7 +49,7 @@ try{
 
 		let newContent = content.replace(
 			oldAbs, fwed
-			JSON.stringify(ROOT_LINUX + "/$1")	aasdfgasdfgdsaf
+			JSON.stringify(ROOT_LINUX + "/$1")	aasdfgasdfgdsafasa
 		);
 
 		console.log()

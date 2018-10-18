@@ -1,4 +1,4 @@
-start-process powershell –verb runAs
+Start-Process powershell -Verb runAs
 echo 'got admin privileges'
 
 #chocolatey
@@ -13,3 +13,6 @@ echo 'chocolatey upgraded.'
 echo 'installing docker...'
 choco install docker -y
 echo 'docker installed.'
+
+#build docker 
+..\..\docker-run.sh

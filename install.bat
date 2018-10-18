@@ -1,0 +1,1 @@
+start "" .\devops\windows\install.vbs
