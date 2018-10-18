@@ -12,8 +12,6 @@ parent = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.
 cmdCommand = parent + "\permissions.bat"
 ps1Command = "powershell.exe -noexit " + parent + "\dependencies.ps1"
 
-Wscript.Echo cmdCommand
-
 Set cmdRunner = CreateObject("Wscript.shell")
 cmdRunner.run(cmdCommand)
 
