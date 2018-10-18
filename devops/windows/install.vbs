@@ -10,7 +10,7 @@ Dim ps1Command
 
 parent = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName)
 cmdCommand = parent + "\permissions.bat"
-ps1Command = "powershell.exe -noprofile -noexit -executionpolicy bypass -file " + parent + "\dependencies.ps1"
+ps1Command = "powershell.exe -noprofile -executionpolicy bypass -file " + parent + "\dependencies.ps1"
 
 Set cmdRunner = CreateObject("Wscript.shell")
 cmdRunner.run(cmdCommand)

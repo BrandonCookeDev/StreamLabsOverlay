@@ -15,4 +15,5 @@ choco install docker -y
 echo 'docker installed.'
 
 #build docker 
-..\..\docker-run.sh
+echo 'building docker container and running...'
+start docker-run.bat
