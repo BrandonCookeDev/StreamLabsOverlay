@@ -1,11 +1,18 @@
 {
   "name": "streamlabstest",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "node server/server",
     "start": "node server/server"
+=======
+    "start": "node server/server",
+    "build": "cd webapp && npm run build",
+    "client": "cd webapp && npm run dev",
+    "test": "node server/server | npm run client",
+    "obs-prep": "node scripts/prepareObsSceneCollection"
+>>>>>>> docker-react
   },
   "repository": {
     "type": "git",
@@ -19,8 +26,17 @@
   "homepage": "https://github.com/BrandonCookeDev/StreamLabsTest#readme",
   "dependencies": {
     "axios": "^0.18.0",
+<<<<<<< HEAD
     "eslint": "^5.6.1",
     "express": "^4.16.3",
     "git": "^0.1.5"
   }
+=======
+    "chalk": "^2.4.1",
+    "express": "^4.16.3",
+    "react-webpack-seed": "^1.0.10"
+  },
+  "devDependencies": {},
+  "description": ""
+>>>>>>> docker-react
 }

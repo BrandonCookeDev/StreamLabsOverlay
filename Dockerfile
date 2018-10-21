@@ -1,19 +1,12 @@
-FROM node
-RUN apt-get update			# update apt-get on the server
-RUN apt-get install -y vim 	# install vim via apt-get
-RUN apt-get install -y curl	# install curl via apt-get
+FROM node	
+RUN apt-get update
+RUN apt-get install -y vim
+RUN apt-get install -y curl
 
-# copy all contents from current directory into servers /var/app directory
-COPY . /var/app			
+COPY . /var/app
+WORKDIR /var/app
+ENV APP_DIR /var/app
 
-# set environment variable $APP_DIR to /var/app	
-ENV APP_DIR /var/app		
-
-# set current directory to /var/app on the server
-WORKDIR /var/app			
-
-# expose port 8080 on the node server
-EXPOSE 8080			
-
-# start the server.
-CMD ["npm", "start"]		
+RUN npm install
+RUN npm run build
+CMD ["npm", "start"]
