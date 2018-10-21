@@ -418,7 +418,7 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": "/Users/brandoncooke/Documents/Workspace/StreamLabsTest/webapp/images/FatalityAway.jpg"
+                "file": "/Users/brandoncooke/Documents/Workspace/StreamLabsOverlay/webapp/images/FatalityAway.jpg"
             },
             "sync": 0,
             "volume": 1.0
@@ -442,7 +442,7 @@
             "settings": {
                 "height": 1080,
                 "is_local_file": true,
-                "local_file": "/Users/brandoncooke/Documents/Workspace/StreamLabsTest/webapp/BRB.html",
+                "local_file": "/Users/brandoncooke/Documents/Workspace/StreamLabsOverlay/webapp/BRB.html",
                 "width": 1920
             },
             "sync": 0,
@@ -556,7 +556,7 @@
             "settings": {
                 "height": 1080,
                 "is_local_file": true,
-                "local_file": "/Users/brandoncooke/Documents/Workspace/StreamLabsTest/webapp/16-9.html",
+                "local_file": "/Users/brandoncooke/Documents/Workspace/StreamLabsOverlay/webapp/16-9.html",
                 "width": 1920
             },
             "sync": 0,
@@ -637,7 +637,7 @@
             "push-to-talk": false,
             "push-to-talk-delay": 0,
             "settings": {
-                "file": "/Users/brandoncooke/Documents/Workspace/StreamLabsTest/webapp/images/4-3.jpg"
+                "file": "/Users/brandoncooke/Documents/Workspace/StreamLabsOverlay/webapp/images/4-3.jpg"
             },
             "sync": 0,
             "volume": 1.0
@@ -661,7 +661,7 @@
             "settings": {
                 "height": 1080,
                 "is_local_file": true,
-                "local_file": "/Users/brandoncooke/Documents/Workspace/StreamLabsTest/webapp/4-3.html",
+                "local_file": "/Users/brandoncooke/Documents/Workspace/StreamLabsOverlay/webapp/4-3.html",
                 "width": 1920
             },
             "sync": 0,

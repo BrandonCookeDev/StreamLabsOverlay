@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict';
 
 const fs = require('fs');
@@ -26,31 +27,34 @@ try{
 	readStream.on('close', function(){
 		console.log(chalk.green('completed content gathering. Overwritting paths...'));
 
-		let oldAbs = new RegExp(/\"\/Users\/brandoncooke\/Documents\/Workspace\/StreamLabsTest\/([\S]*)\"/, 'g');
-		
-		/*
-		let newContent = content.replace(
-			oldAbs,
-			function(match, capture){
-				let newpath;
-				console.log('match', chalk.magenta(match), 'capture', chalk.magenta(capture));	
-				
-				if(osvar === 'win32')
-					newpath = ROOT + '\\' + capture.replace(/\//g, '\\');
-				else
-					newpath = ROOT + '/' + capture;
-				
+		//let oldAbsLinux = new RegExp(/\"\/Users\/brandoncooke\/Documents\/Workspace\/StreamLabsOverlay\/([\S]*)\"/, 'g');
+		//let oldAbsWindows = new RegExp(/\"C:\/Users\/Brandon\/workspace\/StreamLabsOverlay\/([\S]*)\"/'g'); 
+		let oldAbs = new RegExp(/"(C:\/Users\/Brandon\/workspace\/StreamLabsOverlay\/|\/Users\/brandoncooke\/Documents\/Workspace\/StreamLabsOverlay\/)([\S]*)"/, 'gm');
 
+		let newContent;
+		newContent = content.replace(
+			oldAbs,
+			function(match, capture, offset){
+				let newpath;
+				console.log('match', chalk.magenta(match), 'capture', chalk.magenta(capture), 'offset', chalk.magenta(offset));	
+				
+				//if(osvar === 'win32')
+				//	newpath = ROOT_LINUX + '\\' + capture.replace(/\//g, '\\');
+				//else
+				//  newpath = ROOT_LINUX + '/' + capture;
+
+				newpath = ROOT_LINUX + '/' + offset;
 				console.log(chalk.blue(newpath))
 				return JSON.stringify(newpath);
 			}
 		)
-		*/
 
+		/*
 		let newContent = content.replace(
 			oldAbs, fwed
 			JSON.stringify(ROOT_LINUX + "/$1")	aasdfgasdfgdsafasa
 		);
+		*/
 
 		console.log()
 		let writeStream = fs.createWriteStream(OBS_JSON_NEW);

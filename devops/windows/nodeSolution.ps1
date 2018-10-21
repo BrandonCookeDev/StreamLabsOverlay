@@ -16,6 +16,7 @@ echo 'node installed'
 echo 'preparing package...'
 npm run install-all
 npm run build
+npm run obs-prep
 echo 'preparations complete'
 
 echo 'starting server'

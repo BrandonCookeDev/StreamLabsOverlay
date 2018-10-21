@@ -11,6 +11,9 @@
     "test": "node server/server | npm run client",
     "obs-prep": "node scripts/prepareObsSceneCollection"
   },
+  "bin": {
+    "prepObs": "scripts/prepareObsSceneCollection.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BrandonCookeDev/StreamLabsTest.git"
