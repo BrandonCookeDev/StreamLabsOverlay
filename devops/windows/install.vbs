@@ -11,10 +11,10 @@ Dim cmdScript
 Dim ps1Script
 
 parent = CreateObject("Scripting.FileSystemObject").GetParentFolderName(WScript.ScriptFullName)
-cmdScript = "permissions.bat"
+cmdScript = ""
 ps1Script = "nodeSolution.ps1"
-cmdCommand = parent + "\" + cmdScript
-ps1Command = "powershell.exe -noprofile -executionpolicy bypass -file " + parent + "\" + ps1Script
+cmdCommand = parent + "\permissions.bat"
+ps1Command = "powershell.exe -noprofile -executionpolicy bypass -file " + parent + "\nodeSolution.ps1"
 
 Set cmdRunner = CreateObject("Wscript.shell")
 cmdRunner.run(cmdCommand)
