@@ -15,7 +15,7 @@ function renderDataNode(filepath, id, options={}){
 	ReactDOM.render(<Watcher auto interval="3000" filepath={filepath} isMoney={isMoney} />, document.getElementById(id));
 }
 
-renderDataNode(prefix + 'total_subscriber_count.txt', 'subCount');
+renderDataNode(prefix + 'total_subscriber_score.txt', 'subCount');
 renderDataNode(prefix + 'most_recent_subscriber.txt', 'latestSub');
 
 ReactDOM.render(<BitCheerComparator cheerFile={prefix + "all_time_top_cheerer.txt"} donationFile={prefix + 'all_time_top_donator.txt'} auto interval="3000" />, document.getElementById('allTimeDonationCheer'));

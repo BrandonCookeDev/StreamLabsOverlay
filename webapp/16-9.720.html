@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Ideal React Seed </title>
+        <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="styles/base.css" />
+        <style>
+            body{
+                width: 1920px;
+                height: 1080px;
+                font-family: "MADE Evolve Sans Thin";
+                font-weight: 700;
+                letter-spacing: 1px;
+                font-size: 1.3vw;
+            }
+            img.overlayBar{
+                z-index: -5 !important;
+                position: fixed !important;
+                bottom: 0;
+                width: 100%;
+            }
+            img.icon{
+                margin-top: .2%;
+                height: 70%;
+                vertical-align:sub;
+            }
+            label.errorLabel{
+                color: red;
+                font-size: 12pt;
+                font-family: Courier New, Courier, monospace;
+            }
+            div.analyticsWrapper{
+                z-index: 5;
+                bottom: 0;
+                height: 3.7%;
+                padding-top: .15%;
+                margin-left: 24%;
+                position: fixed;
+                color: white;
+                display: inline-block;
+                vertical-align:text-bottom;
+            }
+            .analytics{
+                padding-left: 15px;
+            }
+            .counter{
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="images/LowerBar.png" id="overlayBar" class="overlayBar" />
+        <div class="analyticsWrapper">
+            <span class="analytics">
+                <span class="icon"><img src="images/SubCount.png" class="icon"/></span>
+                <span class="counter">
+                    <span id="subCount" class="subCountSpan watcherElement"></span>
+                </span>
+            </span>
+            <span class="analytics">
+                <span class="icon"><img src="images/LastSub.png" class="icon" /> </span>
+                <span class="counter">
+                    <span id="latestSub" class="latestSubSpan watcherElement"></span>
+                </span>
+            </span>
+            <span class="analytics">
+                <span class="icon"><img src="images/TopTip.png" class="icon"/></span>
+                <span class="counter">
+                    <span id="allTimeDonationCheer" class="donationAmountSpan watcherElement"></span>
+                </span>
+            </span>
+            <span class="analytics">
+                <span class="icon"><img src="images/LastTip.png" class="icon"/></span>
+                <span class="counter">
+                    <span id="latestDonationCheer" class="donationAmountSpan watcherElement"></span>
+                </span>
+            </span>
+        </div>
+
+        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js" ></script>
+        <script type="text/javascript" src="dist/bundle.js"></script>
+        <script type="text/javascript" src="src/common.js"></script>
+    </body>
+</html>

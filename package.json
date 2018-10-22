@@ -9,7 +9,8 @@
     "install-all": "npm install | npm run install-webapp",
     "install-webapp": "cd webapp && npm install webapp",
     "test": "node server/server | npm run client",
-    "obs-prep": "node scripts/prepareObsSceneCollection"
+    "obs-prep": "node scripts/prepareObsSceneCollection",
+    "sl-obs-prep": "node scripts/prepareStreamLabsObsSceneCollection"
   },
   "bin": {
     "prepObs": "scripts/prepareObsSceneCollection.js"
